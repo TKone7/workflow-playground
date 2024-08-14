@@ -36,7 +36,14 @@ jobs:
           sha: ${{ inputs.sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
           status: pending
-      - name: Sleep for 20 seconds
+      - name: Sleep for 10 seconds
         uses: jakejarvis/wait-action@master
         with:
-          time: '20s'
+          time: '10s'
+      - name: Set latest commit status as ${{ job.status }}
+        uses: myrotvorets/set-commit-status-action@master
+        if: always()
+        with:
+          sha: ${{ inputs.sha }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
