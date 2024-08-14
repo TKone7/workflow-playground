@@ -19,8 +19,10 @@ on:
         required: true
 
 jobs:
-  log-the-inputs:
+  attach-to-pr:
     runs-on: ubuntu-latest
+    permissions:
+      statuses: write
     steps:
       - run: |
           echo "Log level: $LEVEL"
