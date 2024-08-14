@@ -36,3 +36,7 @@ jobs:
           sha: ${{ inputs.sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
           status: pending
+      - name: Sleep for 20 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '20s'
